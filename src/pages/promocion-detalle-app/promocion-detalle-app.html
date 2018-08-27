@@ -1,0 +1,26 @@
+<ion-header >
+
+  <ion-navbar color ="headerr">
+    <ion-title>Detalle de promoción</ion-title>
+     <ion-buttons end>        
+        <button ion-button icon-only clear  (click)="close()">
+            <ion-icon name="close"></ion-icon>
+        </button>
+    </ion-buttons> 
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding class="fondo">
+
+    <h1>{{ datos.titulo }}</h1>
+    <img src="http://www.gomargaritaparadise.com/appadmin/fotos/{{datos.id_promocion}}/{{datos.url}}">
+    <h3>Descripción</h3>
+    <p>{{ datos.descripcion }} </p>
+    <p ion-text color="negro">Fecha Inicio : <span ion-text color="azul">{{ datos.fecha_inicio }}</span></p>
+    <p ion-text color="negro">Fecha culminación : <span ion-text color="google">{{ datos.fecha_final }}</span></p>
+    <button ion-button full color="secondary" (click)="participar()"> Participar</button>
+    
+
+
+</ion-content>

@@ -1,0 +1,37 @@
+
+<ion-header >
+
+    <ion-navbar color ="headerr">
+      <ion-title>Promociones Activas</ion-title>     
+    </ion-navbar>
+  
+</ion-header>
+
+
+<ion-content class="cards-bg" padding class="fondo"> 
+
+  <ion-card  *ngFor= "let item of datos">
+    <img src="http://www.gomargaritaparadise.com/appadmin/fotos/{{item['id_promocion']}}/{{item['url']}}" (click)="detalles(item)"/>
+    <ion-card-content>
+      <ion-card-title>
+        {{item["titulo"]}}
+        </ion-card-title> 
+      <p>
+        {{item["descripcion"]}}
+      </p>
+    </ion-card-content>
+    <ion-row no-padding>      
+      <ion-col text-right>
+        <button ion-button clear small icon-start (click)="detalles(item)">
+          <ion-icon name='share-alt'></ion-icon>
+          ver detalles
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-card>  
+  <!--<ion-fab bottom right >
+    <button ion-fab (click)="redes_sociales()"><ion-icon name="logo-instagram"></ion-icon></button>
+    
+  </ion-fab>-->
+
+</ion-content>

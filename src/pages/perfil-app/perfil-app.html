@@ -1,0 +1,92 @@
+<ion-header >
+
+  <ion-navbar color ="headerr">
+    <ion-title>Editar perfil</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding class="fondo">
+    <form [formGroup]="todo">
+      <ion-card>
+          <ion-card-header>
+            Datos Personales
+          </ion-card-header>
+        <ion-card-content>
+        
+              <ion-list>
+                <ion-item>
+                    <ion-label stacked>Nombre</ion-label>
+                    <ion-input  type="text" [(ngModel)]="nomb" formControlName="nomb" value="{{usuario.nombre}}" ></ion-input>
+                </ion-item>
+                <ion-item *ngIf="todo.get('nomb').errors && todo.get('nomb').dirty">							
+                    <p color="google" ion-text *ngIf="todo.get('nomb').hasError('required')">Nombre requerido</p>
+                    <p color="google" ion-text *ngIf="todo.get('nomb').hasError('pattern')" >No admite número</p>
+                </ion-item>
+          
+                <ion-item>
+                    <ion-label stacked>Apellido</ion-label>
+                  <ion-input type="text" [(ngModel)]="ape" formControlName="ape" value="{{usuario.apellido}}"></ion-input>
+                </ion-item>
+                <ion-item *ngIf="todo.get('ape').errors && todo.get('ape').dirty">							
+                    <p color="google" ion-text *ngIf="todo.get('ape').hasError('required')">Apellido requerido</p>
+                    <p color="google" ion-text *ngIf="todo.get('ape').hasError('pattern')" >No admite número</p>
+                </ion-item>
+          
+                <ion-item>
+                    <ion-label stacked>Cédula</ion-label>
+                  <ion-input type="text" *ngIf="usuario.cedula !='undefined'"[(ngModel)]="ced" formControlName="ced" value="{{usuario.cedula}}"></ion-input>
+                  <ion-input type="text" *ngIf="usuario.cedula =='undefined'"[(ngModel)]="ced" formControlName="ced" ></ion-input>
+                </ion-item>
+                <ion-item *ngIf="todo.get('ced').errors && todo.get('ced').dirty">							
+                    <p color="google" ion-text *ngIf="todo.get('ced').hasError('pattern')">No admite letras</p>
+                </ion-item>
+          
+                <ion-item>
+                    <ion-label stacked>Fecha de nacimiento</ion-label>
+                  <ion-input *ngIf="usuario.cedula !='dd/mm/aaaa'" type="date" [(ngModel)]="fecha" formControlName="fecha" value="{{usuario.fecha}}"></ion-input>
+                  <ion-input *ngIf="usuario.cedula =='dd/mm/aaaa'" type="date" [(ngModel)]="fecha" formControlName="fecha" ></ion-input>
+                </ion-item>
+          
+        
+              </ion-list>      
+              
+            </ion-card-content>
+            </ion-card>
+            <ion-card>
+            <ion-card-content>
+                <ion-card-header>
+                  Datos de Contactos
+                  </ion-card-header>
+              <ion-list>
+              
+                <ion-item>
+                    <ion-label stacked>Celular</ion-label>                  
+                  <ion-input type="cel" *ngIf="usuario.telefono !='undefined'" [(ngModel)]="cel" formControlName="cel" value="{{usuario.telefono}}"></ion-input>
+                  <ion-input type="cel" *ngIf="usuario.telefono =='undefined'"[(ngModel)]="cel" formControlName="cel"></ion-input>
+                </ion-item>
+                <ion-item *ngIf="todo.get('cel').errors && todo.get('cel').dirty">							
+                    <p color="google" ion-text *ngIf="todo.get('cel').hasError('pattern')">No admite letras</p>
+                </ion-item>
+          
+                <ion-item>
+                    <ion-label stacked>Correo</ion-label>
+                  <ion-input readonly type="text" [(ngModel)]="correo" formControlName="correo" value="{{usuario.correo}}"></ion-input>
+                </ion-item>
+                <ion-item *ngIf="todo.get('correo').errors && todo.get('correo').dirty">							
+                    <p color="google" ion-text *ngIf="todo.get('correo').hasError('required')">Correo requerido</p>
+                    <p color="google" ion-text *ngIf="todo.get('correo').hasError('email')" >Usuario@ejemplo.com</p>
+                </ion-item>
+                
+                        
+              </ion-list>
+          
+            <div padding>
+              <button ion-button block color="secondary"(click)="modificar_perfil(nomb,ape,ced,fecha,cel,correo)"  > Guardar</button>
+            </div>
+            
+          </ion-card-content>
+        </ion-card>
+    </form>
+ 
+</ion-content>

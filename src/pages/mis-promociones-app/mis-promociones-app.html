@@ -1,0 +1,62 @@
+<ion-header >
+
+  <ion-navbar color ="headerr">
+    <ion-title> Mi Perfil</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding class="fondo">
+    <ion-card text-center>  
+    <div><h2 style="padding-top: 8px">Bienvenido: {{data_usuario.nombre}} {{data_usuario.apellido}}</h2></div>
+    <div float-left >   
+      
+    
+      <ion-buttons end>        
+        <button ion-button icon-only clear style="font-size: 12px" (click)="cambio_contrasena()">
+          <ion-icon name="ios-create-outline" ></ion-icon> Cambio contraseña
+      </button>
+      
+      <button ion-button icon-only clear style="font-size: 12px" (click)="editar_perfil()">
+        <ion-icon name="md-create" ></ion-icon> Editar Datos
+      </button>
+
+    </ion-buttons>
+    
+    </div>
+  </ion-card>    
+     
+  <div float-left><h5 style="padding-top: 8px; padding-left: 11px">Mis promociones</h5>  </div>
+      
+        <div *ngIf="my_promociones!=''">
+          <ion-card  > 
+            <ion-list >
+                <ion-item *ngFor ="let mis_promo of my_promociones" class="fondo_card" style="margin-top: 8px;">
+                    
+                  <ion-thumbnail item-start>
+                    <img src="http://www.gomargaritaparadise.com/appadmin/fotos/{{mis_promo['id_promocion']}}/{{mis_promo['url']}}">
+                  </ion-thumbnail>
+                  <h2  style=" color: white;" iont-text>Promoción : {{ mis_promo.titulo }}</h2>
+                  <p  style=" color: white;" ion-text>Fecha de culminación : <span ion-text color="google">{{ mis_promo.fecha_final }}</span>  </p>
+              
+                </ion-item>
+            
+            </ion-list>
+          </ion-card>    
+        </div>
+        <ion-card >
+          <div *ngIf="my_promociones==''">    
+             
+              <ion-list>
+                  <ion-item >                               
+                   
+                    <h2><span ion-text color="google"> No tienes promociones activas</span> </h2>                
+                
+                  </ion-item>
+              
+              </ion-list>
+          </div>  
+      </ion-card>      
+      
+</ion-content>

@@ -1,0 +1,29 @@
+
+<ion-header>
+
+  <ion-navbar color ="headerr">
+    <ion-title>Descripción de la Ruta </ion-title>
+    <ion-buttons end>
+      <button ion-button ion-only (click)="cerrar_ventana()">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+    <h1></h1>
+    <img src="http://www.gomargaritaparadise.com/appadmin/fotos/sitios/{{json.foto}}">
+    <h3>{{ json.nombre_sitio }}</h3>
+    <p></p>
+    <p ion-text color="negro"> <span ion-text color="azul">{{ json.nombre_categoria }}</span></p>
+
+    <p ion-text color="negro"> <span ion-text color="google">{{ json.telefono }}</span></p>
+    <p ion-text color="negro"> <span ion-text color="google">{{ json.descripcion }}</span></p>
+    <button ion-button full color="secondary" (click)="coordenada(json)"> ¿Cómo llegar ?</button>
+   
+   
+</ion-content>

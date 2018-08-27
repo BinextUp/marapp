@@ -1,0 +1,23 @@
+<ion-menu [content]="NAV">
+  <ion-header  >
+    <ion-toolbar color ="headerr">
+      <ion-title>Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+
+
+  <ion-content>
+    <ion-list>
+
+      <button ion-item *ngFor="let page of pagina"  (click)="entre_pagina(page.componente)">
+        <ion-icon name="{{ page.icono}}"></ion-icon> 
+        {{page.titulo}} 
+      </button>     
+      
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<ion-nav #NAV [root]="rootPage"></ion-nav>
+

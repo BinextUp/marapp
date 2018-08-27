@@ -1,0 +1,36 @@
+<ion-header >
+  <ion-navbar >    
+    <ion-title >
+      Mapa
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content >
+   
+    <div class="map-container">
+     
+        <div id="map" class="map-container" > </div>
+    </div>
+    <ion-fab right bottom >
+        <button ion-fab color="light"><ion-icon name="md-bookmark"></ion-icon></button>
+        <ion-fab-list side="top">
+          <button ion-fab><ion-icon color="cc" name="md-pin"></ion-icon><ion-label>Centro Comerciales</ion-label></button>  
+          <button ion-fab><ion-icon color="vida" name="md-pin"></ion-icon><ion-label>Vida Nocturna</ion-label></button>       
+          <button ion-fab><ion-icon color="gastronomia" name="md-pin"></ion-icon><ion-label>Gastronomia</ion-label></button>          
+          <button ion-fab><ion-icon color="parque" name="md-pin"></ion-icon><ion-label>Parques</ion-label></button>
+          <button ion-fab><ion-icon color="playa" name="md-pin"></ion-icon><ion-label>Playas</ion-label></button>          
+          <button ion-fab><ion-icon color="actual" name="md-pin"></ion-icon><ion-label>Yo</ion-label></button> 
+        </ion-fab-list>
+      </ion-fab>
+
+      <ion-fab left bottom>
+        <button ion-fab color="light" (click)="todo_mapa()"><ion-icon name="ios-arrow-dropleft-circle-outline"></ion-icon></button>
+        
+      </ion-fab>
+  
+</ion-content>
+
+
+  
+

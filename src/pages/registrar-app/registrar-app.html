@@ -1,0 +1,77 @@
+<ion-header >
+
+  <ion-navbar color ="headerr">
+    <ion-title> Registrar Usuario </ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content class="fondo">
+	<ion-card>
+		<ion-card-header>
+			Datos básicos
+		</ion-card-header>
+	</ion-card>
+	<ion-card-content>
+		<form [formGroup]="todo">
+			<ion-list >
+				<ion-item>
+					<ion-label stacked>Nombre</ion-label>
+					<ion-input type="text" [(ngModel)]="nomb" formControlName="nomb"></ion-input>
+				</ion-item>
+				<ion-item *ngIf="todo.get('nomb').errors && todo.get('nomb').dirty">							
+					<p color="google" ion-text *ngIf="todo.get('nomb').hasError('required')">Nombre requerido</p>
+					<p color="google" ion-text *ngIf="todo.get('nomb').hasError('pattern')" >No debe contener número y caracteres especiales</p>
+				</ion-item>
+
+				<ion-item>
+					<ion-label stacked>Apellido</ion-label>
+					<ion-input type="text" [(ngModel)]="ape" formControlName="ape"></ion-input>
+				</ion-item>
+				
+				<ion-item *ngIf="todo.get('ape').errors && todo.get('ape').dirty">							
+					<p color="google" ion-text *ngIf="todo.get('ape').hasError('required')">Apellido requerido</p>
+					<p color="google" ion-text *ngIf="todo.get('ape').hasError('pattern')" >EL campo no debe contener número</p>
+				</ion-item>		
+
+				<ion-item>
+					<ion-label stacked>Correo</ion-label>
+					<ion-input type="text" [(ngModel)]="correo" formControlName="correo"></ion-input>
+				</ion-item>
+				<ion-item *ngIf="todo.get('correo').errors && todo.get('correo').dirty">							
+					<p color="google" ion-text *ngIf="todo.get('correo').hasError('required')">Correo requerido</p>
+					<p color="google" ion-text *ngIf="todo.get('correo').hasError('email')" >Usuario@ejemplo.com</p>
+				</ion-item>
+
+				<ion-item>
+					<ion-label stacked>Contraseña</ion-label>
+				<ion-input type="password" [(ngModel)]="psw" formControlName="psw"></ion-input>
+				</ion-item>
+				<ion-item *ngIf="todo.get('psw').errors && todo.get('psw').dirty">							
+					<p color="google" ion-text *ngIf="todo.get('psw').hasError('required')">Contraseña requerida</p>					
+				</ion-item>
+				
+				<ion-item>
+					<ion-label stacked>Confirmar contraseña</ion-label>
+					<ion-input type="password" [(ngModel)]="confpsw" formControlName="confpsw"  #confpass (keyup)="verificar(psw,confpass.value)"></ion-input>
+				</ion-item>
+				<ion-item *ngIf="mensaje">							
+					<p color="google" ion-text>Contraseña no coinciden</p>					
+				</ion-item>	
+				<ion-item *ngIf="todo.get('confpsw').errors && todo.get('confpsw').dirty">							
+					<p color="google" ion-text *ngIf="todo.get('confpsw').hasError('required')">confirmacion de contraseña requerida</p>					
+				</ion-item>
+				<ion-item >							
+										
+				</ion-item>				
+		
+
+			</ion-list>
+		</form>
+		<div padding>
+			<button ion-button block color="secondary"(click)="guardar_usuario(nomb,ape,correo,psw) " [disabled]="!todo.valid" > Guardar</button>
+		</div>
+		
+	</ion-card-content>
+
+</ion-content>

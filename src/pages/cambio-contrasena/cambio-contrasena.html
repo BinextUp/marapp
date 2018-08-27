@@ -1,0 +1,67 @@
+<ion-header >
+
+  <ion-navbar color="headerr">
+    <ion-title> Cambio de contraseña</ion-title>
+     <ion-buttons end>        
+        <button ion-button icon-only clear  (click)="close()">
+            <ion-icon name="close"></ion-icon>
+        </button>
+    </ion-buttons> 
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content class="fondo">
+
+	<ion-card-content>
+		<form [formGroup]="todo">
+			<ion-list >
+				
+				<ion-item>
+					<ion-label stacked>Contraseña Actual</ion-label>
+				<ion-input type="password" [(ngModel)]="contra_actual" formControlName="contra_actual"></ion-input>
+				</ion-item>
+				<ion-item *ngIf="todo.get('contra_actual').errors && todo.get('contra_actual').dirty">							
+					<p color="google" ion-text *ngIf="todo.get('contra_actual').hasError('required')">Contraseña requerida</p>					
+				</ion-item>
+
+
+				<ion-item>
+					<ion-label stacked>Nueva contraseña</ion-label>
+				<ion-input type="password" [(ngModel)]="psw" formControlName="psw"></ion-input>
+				</ion-item>
+				<ion-item *ngIf="todo.get('psw').errors && todo.get('psw').dirty">							
+					<p color="google" ion-text *ngIf="todo.get('psw').hasError('required')">Contraseña requerida</p>					
+				</ion-item>
+				
+				<ion-item>
+					<ion-label stacked>Confirmar nueva contraseña</ion-label>
+					<ion-input type="password" [(ngModel)]="confpsw" formControlName="confpsw" #confpass (keyup)="verificar(psw,confpass.value)"></ion-input>
+        		</ion-item>	
+        <ion-item *ngIf="mensaje">							
+					<p color="google" ion-text>Contraseña no coinsiden</p>					
+				</ion-item>
+        
+
+				<ion-item *ngIf="todo.get('confpsw').errors && todo.get('confpsw').dirty">							
+					<p color="google" ion-text *ngIf="todo.get('confpsw').hasError('required')">confirmacion de contraseña requerida</p>					
+				</ion-item>
+				<ion-item >					
+										
+				</ion-item>				
+		
+
+			</ion-list>
+		</form>
+		<div padding>
+			<button ion-button block color="secondary"(click)="guardar_contrasena(contra_actual, psw, confpsw) " [disabled]="!todo.valid" > Guardar</button>
+		</div>
+		
+	</ion-card-content>
+
+</ion-content>
+
+<script>
+
+
+</script>

@@ -1,0 +1,33 @@
+<ion-header >
+
+    <ion-navbar color ="headerr">
+      <ion-title> Recuperar Cuenta </ion-title>
+    </ion-navbar>
+  
+  </ion-header>
+  
+  <ion-content class="fondo">
+   
+    <ion-card-content>
+      <form [formGroup]="todo">
+        <ion-list >        	
+  
+          <ion-item>
+            <ion-label stacked>Correo</ion-label>
+            <ion-input type="text" [(ngModel)]="correo" formControlName="correo"></ion-input>
+          </ion-item>
+          <ion-item *ngIf="todo.get('correo').errors && todo.get('correo').dirty">							
+            <p color="google" ion-text *ngIf="todo.get('correo').hasError('required')">Correo requerido</p>
+            <p color="google" ion-text *ngIf="todo.get('correo').hasError('email')" >Usuario@ejemplo.com</p>
+          </ion-item>  	
+      
+  
+        </ion-list>
+      </form>
+      <div padding>
+        <button ion-button block color="secondary"(click)="enviar_email(correo)" [disabled]="!todo.valid" > Enviar</button>
+      </div>
+      
+    </ion-card-content>
+  
+  </ion-content>

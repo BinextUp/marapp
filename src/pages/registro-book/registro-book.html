@@ -1,0 +1,72 @@
+<ion-header >
+  
+  <ion-navbar color ="headerr">
+    <ion-title> Registrar Usuario</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content class="fondo">
+	<ion-card>
+		<ion-card-header>
+			Datos Básicos
+		</ion-card-header>
+	</ion-card>
+	<ion-card-content>
+		
+		<form [formGroup]="todo">
+			<ion-list >
+				<ion-item>
+						<ion-label stacked>Nombre(s)</ion-label>
+						<ion-input type="text" [(ngModel)]="nomb" formControlName="nomb" readonly value="{{arre[0]}}"></ion-input>
+				</ion-item>
+				<ion-item *ngIf="todo.get('nomb').errors && todo.get('nomb').dirty">							
+					<p color="google" ion-text *ngIf="todo.get('nomb').hasError('required')">Nombre requerido</p>
+					<p color="google" ion-text *ngIf="todo.get('nomb').hasError('pattern')" >EL campo no debe contener número</p>
+				</ion-item>
+
+				<ion-item>
+					<ion-label stacked>Apellido(s)</ion-label>
+					<ion-input type="text" [(ngModel)]="ape" formControlName="ape" value="{{arre[1]}}"></ion-input>
+				</ion-item>
+				<ion-item *ngIf="todo.get('ape').errors && todo.get('ape').dirty">							
+					<p color="google" ion-text *ngIf="todo.get('ape').hasError('required')">Apellido requerido</p>
+					<p color="google" ion-text *ngIf="todo.get('ape').hasError('pattern')" >EL campo no debe contener número</p>
+				</ion-item>				
+
+				<ion-item>
+					<ion-label stacked>Correo</ion-label>
+					<ion-input type="text" [(ngModel)]="correo" readonly formControlName="correo" value="{{book.email}}"></ion-input>
+				</ion-item>
+				<ion-item *ngIf="todo.get('correo').errors && todo.get('correo').dirty">							
+					<p color="google" ion-text *ngIf="todo.get('correo').hasError('required')">Correo requerido</p>
+					<p color="google" ion-text *ngIf="todo.get('correo').hasError('email')" >Usuario@ejemplo.com</p>
+				</ion-item>
+
+				<ion-item>
+					<ion-label stacked>Contraseña</ion-label>
+				<ion-input type="password" [(ngModel)]="psw" formControlName="psw"></ion-input>
+				</ion-item>
+				<ion-item *ngIf="todo.get('psw').errors && todo.get('psw').dirty">							
+					<p color="google" ion-text *ngIf="todo.get('psw').hasError('required')">Contraseña requerida</p>					
+				</ion-item>
+				
+				<ion-item>
+						<ion-label stacked>Confirmar contraseña</ion-label>
+					<ion-input type="password" [(ngModel)]="confpsw" formControlName="confpsw"></ion-input>
+				</ion-item>	
+				<ion-item *ngIf="todo.get('confpsw').errors && todo.get('confpsw').dirty">							
+						<p color="google" ion-text *ngIf="todo.get('confpsw').hasError('required')">Confirmacion de contraseña requerida</p>					
+				</ion-item>
+				
+
+
+			</ion-list>
+		</form>
+		<div padding>
+			<button ion-button block color="secondary"(click)="guardar_usuario_facebook(nomb, ape, psw)" [disabled]="!todo.valid" > Guardar</button>
+		</div>
+		
+	</ion-card-content>
+
+</ion-content>

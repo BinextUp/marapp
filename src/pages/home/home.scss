@@ -1,0 +1,57 @@
+page-home {
+
+	 .logo{
+        width: 50%;
+        height: 25%;
+        display:block;
+        margin:auto;
+    }
+    
+    .fondo{
+    
+        background-image: url('../assets/imgs/fondo_login.png') ;
+        background-repeat: no-repeat ;
+        background-size: cover ;
+        background-position: center ;
+        width: 100% ;
+        position: relative ;
+        border: none ;
+        
+    }
+    .alinear{
+      
+        align-content: center; 
+        justify-content: center;
+        text-align: center;       
+      }
+    
+
+    ion-card.card{
+       box-shadow: none;
+       background: rgba(255, 255, 255, 0.8);
+       border-radius: 5px;
+       
+    
+    }
+    a{
+        color: white;
+    }
+    .item{
+        margin-bottom: 1px;
+        background: transparent;
+        border-radius: 3px;
+    }
+    p{
+        color: black;
+        font-size: 18px;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+    }
+    .text-input, .label{
+        color: black;
+        text-color: black;
+    }
+
+    .texto_blanco{
+        color: white;
+    }
+}

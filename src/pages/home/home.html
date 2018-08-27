@@ -1,0 +1,56 @@
+<ion-content class="fondo">
+
+		<ion-card-content>
+			<img class="logo" src="assets/imgs/logo_margarita.png"/>
+		</ion-card-content>
+	
+	<ion-card>	
+		
+		<ion-card-content>
+
+			<form [formGroup]="todo">
+				
+				<ion-list>
+					
+					<ion-item>
+
+						<ion-label  stacked class="texto">Correo</ion-label>
+						<ion-input type="email" [(ngModel)]="usuario" formControlName="usuario" ></ion-input>
+						
+					</ion-item >
+					<ion-item *ngIf="todo.get('usuario').errors && todo.get('usuario').dirty">							
+						<p color="google" ion-text>Usuario@ejemplo.com</p>
+					</ion-item>
+
+					<ion-item>
+						<ion-label stacked class="texto"> Contraseña </ion-label>
+						<ion-input type="password" [(ngModel)]="psw"  formControlName="psw" ></ion-input>
+					</ion-item>
+					<ion-item *ngIf="todo.get('psw').errors && todo.get('psw').dirty">							
+						<p color="google" ion-text>Campo requerido</p>
+					</ion-item>
+					
+				</ion-list>
+
+			</form>		
+			
+		</ion-card-content>
+	</ion-card>	
+
+	<ion-grid class="alinear">
+		<ion-row>
+		  <ion-col col-md-12><div padding>
+			<button ion-button block (click)="credenciales(usuario,psw)" [disabled]="!todo.valid"> Iniciar sesion</button>
+		</div></ion-col>		
+		</ion-row>
+		<ion-row>
+		  <ion-col col-md-12><div padding>
+			<button ion-button block icon-logo-facebook color="facebook" (click)="login_facebook()"> 
+				<ion-icon name="logo-facebook"> </ion-icon> 
+			</button>
+		</div></ion-col>		
+		</ion-row>
+		<div class="alinear" ><button class="texto_blanco" ion-button color="dark" clear (click)="olvido_contrasena()"> ¿Se te olvido la contraseña?</button></div>	
+	</ion-grid>
+	<!--<div class="alinear" ><button class="texto_blanco" ion-button color="dark" clear (click)="registrar_usuario()"> ¿No tienes cuenta? Registrate aquí</button></div>-->
+</ion-content>
